@@ -1,0 +1,320 @@
+
+ ===================================== 
+           [ data table ]              
+ ===================================== 
+
+
+ 분석 방법에 따른 분류 
+ [1], [2], [3], [4]는 독립변수가 이산(0 혹은 자연수. 하나하나 셀 수 있음)변수이고. 
+ 종속변수는 코로나에 걸린적이 있냐라는 이항(0 또는 1)변수이다. 
+ 따라서 이 항목들은 로지스틱 회귀라는 방식을 사용하여 분석한다. 
+ 
+ [5]~[15]의 경우 독립변수가 위험 요인에 노출되었는지의 유무인 이항변수(0, 1)이고 
+ 종속변수는 코로나에 걸린적이 있냐라는 이항변수(0, 1)이다. 
+ 따라서 이 항목들은 표를 만들어 Odds ratio를 구해 분석한다. 
+ [16]은 school_year, year_of_birth, number_of_club, total_activity_num, activity1~11 변수의 전체적인 통계치를 요약한 표이다. 
+ [17]은 로지스틱 회귀분석한 결과이다. 
+ [18]과 [19]는 activity1~11 각각의 odds ratio를 구한 후, 그 confidence interval을 구해 요약한 표이다. 
+ 
+
+ ------------------------------------------------------------------------------------ 
+ [1] distribution of school_year 
+ school_year : 2022년 기준 학년. 1은 예과 1학년, 2는 예과 2학년, 3은 본과 1학년, 4는 본과 2학년. 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 school_year
+COVID19_infection  1  2  3  4
+                0  5  9 12  9
+                1 12 13 10 11
+
+ ------------------------------------------------------------------------------------ 
+ [2] distribution of year_of_birth 
+ year_of_birth : 태어난 년도. 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 year_of_birth
+COVID19_infection 1991 1994 1997 1998 1999 2000 2001 2002 2003
+                0    0    1    3    3    6    7    8    4    3
+                1    1    0    1    6    4   18    8    3    5
+
+ ------------------------------------------------------------------------------------ 
+ [3] distribution of number_of_club 
+ number_of_club : 참여하고 있는 동아리+동문회 수. 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 number_of_club
+COVID19_infection  0  1  2  3  4  5
+                0  4  6  8  7  3  7
+                1  1  8  7 13 10  7
+
+ ------------------------------------------------------------------------------------ 
+ [4] distribution of total_activity_num 
+ total_activity_num : 총 참여한 동아리 활동 종류의 수. ##5는 5개 이상을 의미.## 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 total_activity_number
+COVID19_infection  0  1  2  3  4  5  6  7
+                0  5  0  9  6  7  3  5  0
+                1  3  3  3  8 15  6  5  3
+
+ ------------------------------------------------------------------------------------ 
+ [5] distribution of activity_1 
+ activity_code_1 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_1 : 활동 내용 : 식사 (동아리원과 함께한 모든 식사자리) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_1
+COVID19_infection  0  1
+                0  6 29
+                1  6 40
+
+ ------------------------------------------------------------------------------------ 
+ [6] distribution of activity_2 
+ activity_code_2 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_2 : 활동 내용 : 술자리 (소규모 포함) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_2
+COVID19_infection  0  1
+                0  7 28
+                1  7 39
+
+ ------------------------------------------------------------------------------------ 
+ [7] distribution of activity_3 
+ activity_code_3 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_3 : 활동 내용 : MT 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_3
+COVID19_infection  0  1
+                0 25 10
+                1 22 24
+
+ ------------------------------------------------------------------------------------ 
+ [8] distribution of activity_4 
+ activity_code_4 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_4 : 활동 내용 : 단체 공연 연습 (합주, 합숙) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_4
+COVID19_infection  0  1
+                0 25 10
+                1 22 24
+
+ ------------------------------------------------------------------------------------ 
+ [9] distribution of activity_5 
+ activity_code_5 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_5 : 활동 내용 : 전시회 준비 (축제 준비를 위한 전시회 준비) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_5
+COVID19_infection  0  1
+                0 29  6
+                1 35 11
+
+ ------------------------------------------------------------------------------------ 
+ [10] distribution of activity_6 
+ activity_code_6 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_6 : 활동 내용 : 야외 운동 (축구, 농구, 야구, 요트 등) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_6
+COVID19_infection  0  1
+                0 31  4
+                1 41  5
+
+ ------------------------------------------------------------------------------------ 
+ [11] distribution of activity_7 
+ activity_code_7 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_7 : 활동 내용 : 기타 야외 활동 (출사, 축제부스, 야외봉사활동 등) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_7
+COVID19_infection  0  1
+                0 29  6
+                1 33 13
+
+ ------------------------------------------------------------------------------------ 
+ [12] distribution of activity_8 
+ activity_code_8 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_8 : 활동 내용 : 실내 운동 (볼링, 검도 등) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_8
+COVID19_infection  0  1
+                0 30  5
+                1 42  4
+
+ ------------------------------------------------------------------------------------ 
+ [13] distribution of activity_9 
+ activity_code_9 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_9 : 활동 내용 : 기타 실내활동 (요리, 보드게임, 그림그리기, 실내봉사활동 등) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_9
+COVID19_infection  0  1
+                0 25 10
+                1 33 13
+
+ ------------------------------------------------------------------------------------ 
+ [14] distribution of activity_10 
+ activity_code_10 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_10 : 활동 내용 : 비대면 활동 (종교활동 등) 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_10
+COVID19_infection  0  1
+                0 34  1
+                1 45  1
+
+ ------------------------------------------------------------------------------------ 
+ [15] distribution of activity_11 
+ activity_code_11 : 활동 참여 유무. 0은 참여 안함, 1은 참여 함. 
+ activity_code_11 : 활동 내용 : 동아리 활동을 하지 않음 
+ COVID19_infection : 0은 감염력 없음, 1은 감염력 있음. 
+ 
+                 activity_code_11
+COVID19_infection  0  1
+                0 30  5
+                1 43  3
+
+ ------------------------------------------------------------------------------------ 
+ [16] summary of raw data 
+ 
+  school_year    year_of_birth  number_of_participated_club number_of_COVID19_infected
+ Min.   :1.000   Min.   :1991   Min.   :0.00                Min.   :0.0000            
+ 1st Qu.:2.000   1st Qu.:1999   1st Qu.:2.00                1st Qu.:0.0000            
+ Median :3.000   Median :2000   Median :3.00                Median :1.0000            
+ Mean   :2.556   Mean   :2000   Mean   :2.79                Mean   :0.5679            
+ 3rd Qu.:3.000   3rd Qu.:2001   3rd Qu.:4.00                3rd Qu.:1.0000            
+ Max.   :4.000   Max.   :2003   Max.   :5.00                Max.   :1.0000            
+ activity_code_1_participated activity_code_2_participated activity_code_3_participated
+ Min.   :0.0000               Min.   :0.0000               Min.   :0.0000              
+ 1st Qu.:1.0000               1st Qu.:1.0000               1st Qu.:0.0000              
+ Median :1.0000               Median :1.0000               Median :0.0000              
+ Mean   :0.8519               Mean   :0.8272               Mean   :0.4198              
+ 3rd Qu.:1.0000               3rd Qu.:1.0000               3rd Qu.:1.0000              
+ Max.   :1.0000               Max.   :1.0000               Max.   :1.0000              
+ activity_code_4_participated activity_code_5_participated activity_code_6_participated
+ Min.   :0.0000               Min.   :0.0000               Min.   :0.0000              
+ 1st Qu.:0.0000               1st Qu.:0.0000               1st Qu.:0.0000              
+ Median :0.0000               Median :0.0000               Median :0.0000              
+ Mean   :0.4198               Mean   :0.2099               Mean   :0.1111              
+ 3rd Qu.:1.0000               3rd Qu.:0.0000               3rd Qu.:0.0000              
+ Max.   :1.0000               Max.   :1.0000               Max.   :1.0000              
+ activity_code_7_participated activity_code_8_participated activity_code_9_participated
+ Min.   :0.0000               Min.   :0.0000               Min.   :0.000               
+ 1st Qu.:0.0000               1st Qu.:0.0000               1st Qu.:0.000               
+ Median :0.0000               Median :0.0000               Median :0.000               
+ Mean   :0.2346               Mean   :0.1111               Mean   :0.284               
+ 3rd Qu.:0.0000               3rd Qu.:0.0000               3rd Qu.:1.000               
+ Max.   :1.0000               Max.   :1.0000               Max.   :1.000               
+ activity_code_10_participated activity_code_11_participated total_activity_number
+ Min.   :0.00000               Min.   :0.00000               Min.   :0.000        
+ 1st Qu.:0.00000               1st Qu.:0.00000               1st Qu.:2.000        
+ Median :0.00000               Median :0.00000               Median :4.000        
+ Mean   :0.02469               Mean   :0.09877               Mean   :3.494        
+ 3rd Qu.:0.00000               3rd Qu.:0.00000               3rd Qu.:5.000        
+ Max.   :1.00000               Max.   :1.00000               Max.   :7.000        
+
+ ------------------------------------------------------------------------------------ 
+ [17] logistic regression 
+ 
+ 사용한 변수 
+ c(3, 7, 8, 11, 12, 15, 16, 4) 
+ ## [3] number_of_club  
+ ## [7] activity_code_3 
+ ## [8] activity_code_4 
+ ## [11] activity_code_7 
+ ## [12] activity_code_8 
+ ## [15] activity_code_11 
+ ## [16] total_activity_number 
+ ## 종속변수 : [4] number_of_COVID19_infected 
+ 데이터를 7:3으로 나누어 70%는 logistic regression에 이용하는 training set으로, 30%는 만들어진 모델을 테스트할 test set으로 지정했음. 
+
+ logistic regression 모델 요약 
+
+Call:
+glm(formula = number_of_COVID19_infected ~ ., family = binomial, 
+    data = training)
+
+Coefficients:
+                              Estimate Std. Error z value Pr(>|z|)
+(Intercept)                    0.71333    0.94774   0.753    0.452
+number_of_participated_club    0.08962    0.23598   0.380    0.704
+activity_code_3_participated   0.28566    0.82727   0.345    0.730
+activity_code_4_participated   0.65727    0.73596   0.893    0.372
+activity_code_7_participated   0.59356    0.92942   0.639    0.523
+activity_code_8_participated  -0.22509    0.89513  -0.251    0.801
+activity_code_11_participated -0.78793    1.21839  -0.647    0.518
+total_activity_number         -0.30942    0.34273  -0.903    0.367
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 76.486  on 55  degrees of freedom
+Residual deviance: 74.792  on 48  degrees of freedom
+AIC: 90.792
+
+Number of Fisher Scoring iterations: 4
+
+
+ test set에 최종 모델을 적용하여 확률 기준 top 10명을 추출했음. 
+       72        14        13         2        35        61        70        60        66        71 
+0.7429160 0.7121198 0.6901473 0.6795612 0.6795612 0.6451532 0.6324131 0.6243798 0.6243798 0.6056821 
+
+ 실제로 코로나에 걸렸던 적이 있는지 확인해보았음. 
+    predict2 test.number_of_COVID19_infected
+1  0.7429160                               1
+2  0.7121198                               1
+3  0.6901473                               1
+4  0.6795612                               1
+5  0.6795612                               1
+6  0.6451532                               1
+7  0.6324131                               0
+8  0.6243798                               1
+9  0.6243798                               1
+10 0.6056821                               1
+
+ ------------------------------------------------------------------------------------ 
+ [18] Odds ratio of 11 activities with p-value, conf.level=0.90 
+ activity_code : 활동 코드. 1~11. 
+ estimate : Odds ratio 값. 
+ lower : Odds ratio 범위 추정 하한값 
+ upper : Odds ratio 범위 추정 상한값 
+ p_value_fisher.exact : p-value. 방법은 fisher.exact. 
+ 사용하는 데이터가 자유도가 1이고, 데이터 중 5 이하인 것도 있으니 fisher.exact을 해야 함. 
+ 
+   activity_code  estimate      lower    upper p_value_fisher.exact
+1              1 1.3793103 0.49197416 3.867067           0.75431614
+2              2 1.3928571 0.52852292 3.670704           0.76770780
+3              3 2.7272727 1.24534218 5.972669           0.04201036
+4              4 2.7272727 1.24534218 5.972669           0.04201036
+5              5 1.5190476 0.59851628 3.855377           0.58472456
+6              6 0.9451220 0.29310174 3.047595           1.00000000
+7              7 1.9040404 0.76381101 4.746423           0.29624872
+8              8 0.5714286 0.17711054 1.843654           0.48990144
+9              9 0.9848485 0.43469141 2.231299           1.00000000
+10            10 0.7555556 0.07162491 7.970191           1.00000000
+11            11 0.4186047 0.11834143 1.480714           0.28214691
+
+ ------------------------------------------------------------------------------------ 
+ [19] Odds ratio of 11 activities with p-value, conf.level=0.95 
+ activity_code : 활동 코드. 1~11. 
+ estimate : Odds ratio 값. 
+ lower : Odds ratio 범위 추정 하한값 
+ upper : Odds ratio 범위 추정 상한값 
+ p_value_fisher.exact : p-value. 방법은 fisher.exact. 
+ 사용하는 데이터가 자유도가 1이고, 데이터 중 5 이하인 것도 있으니 fisher.exact을 해야 함. 
+ 
+   activity_code  estimate      lower     upper p_value_fisher.exact
+1              1 1.3793103 0.40380442  4.711432           0.75431614
+2              2 1.3928571 0.43897674  4.419485                   NA
+3              3 2.7272727 1.07169065  6.940451           0.04201036
+4              4 2.7272727 1.07169065  6.940451           0.04201036
+5              5 1.5190476 0.50070897  4.608477           0.58472456
+6              6 0.9451220 0.23421199  3.813876           1.00000000
+7              7 1.9040404 0.64119566  5.654077           0.29624872
+8              8 0.5714286 0.14151015  2.307471           0.48990144
+9              9 0.9848485 0.37165192  2.609771           1.00000000
+10            10 0.7555556 0.04560849 12.516622           1.00000000
+11            11 0.4186047 0.09290235  1.886172           0.28214691
